@@ -40,149 +40,198 @@
             background-color: white;
             color: black;
         }
+
+         /* Loader Styles */
+         #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #111827; /* Match the site's dark theme */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        .loader-circle {
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-top: 5px solid #6366F1; /* Indigo color */
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
     </style>
 </head>
 <body class="font-Inter bg-gray-900 text-gray-200 transition-colors duration-300">
-    <!-- Progress Bar -->
-    <div id="progress-bar"></div>
-
-    <!-- Navbar -->
-    <nav class="bg-gray-800 text-white flex items-center justify-between p-3 md:px-20">
-        <!-- Left side: Logo  space-x-3 -->
-        <div class="flex items-center"> 
-            <div class="bg-blue-600 text-white rounded-full p-1 text-2xl font-semibold">
-                SN
-            </div>
-            <span class="text-2xl font-semibold text-white tracking-wider">askar</span>
-        </div>
-
-        <!-- Center: Navigation Tabs (Responsive) -->
-        <div class="hidden md:flex space-x-8 text-lg">
-            <a href="#about" class="hover:text-blue-400 transition duration-200">About Me</a>
-            <a href="#skills" class="hover:text-blue-400 transition duration-200">Skills</a>
-            <a href="#projects" class="hover:text-blue-400 transition duration-200">Projects</a>
-        </div>
-
-        <!-- Right side: Contact (Responsive) -->
-        <div class="hidden md:flex space-x-6 text-xl">
-            <a href="mailto:your-email@example.com" class="hover:text-blue-400 transition duration-200"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/your-profile" class="hover:text-blue-400 transition duration-200"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/your-github" class="hover:text-blue-400 transition duration-200"><i class="fab fa-github"></i></a>
-        </div>
-
-        <!-- Mobile: Light/Dark Mode Toggle Button -->
-        <!-- <button id="theme-toggle-mobile" class="text-xl text-gray-200 hover:text-gray-400 md:hidden">
-            <i class="fa-solid fa-moon"></i>
-        </button> -->
-
-        <!-- Mobile Menu Button -->
-        <div class="md:hidden flex items-center">
-            <button id="mobile-menu-btn" class="text-3xl">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
-
-        <!-- Desktop: Light/Dark Mode Toggle Button -->
-        <!-- <button id="theme-toggle-desktop" class="hidden md:flex items-center space-x-2 text-xl text-gray-200 hover:text-gray-400">
-            <i class="fa-solid fa-moon"></i>
-        </button> -->
-    </nav>
-
-    <!-- Mobile Menu (Hidden by default) -->
-    <div id="mobile-menu" class="md:hidden bg-gray-800 text-white p-3 space-y-4 hidden">
-        <a href="#about" class="block hover:text-blue-400 transition duration-200">About Me</a>
-        <a href="#skills" class="block hover:text-blue-400 transition duration-200">Skills</a>
-        <a href="#projects" class="block hover:text-blue-400 transition duration-200">Projects</a>
-        <div class="flex space-x-6 text-xl justify-center">
-            <a href="mailto:your-email@example.com" class="hover:text-blue-400 transition duration-200"><i class="fas fa-envelope"></i></a>
-            <a href="https://www.linkedin.com/in/your-profile" class="hover:text-blue-400 transition duration-200"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/your-github" class="hover:text-blue-400 transition duration-200"><i class="fab fa-github"></i></a>
-        </div>
+    <div id="loader">
+        <div class="loader-circle"></div>
     </div>
 
-    <!-- Hero Section -->
-    <section class="flex flex-col md:flex-row justify-between items-center py-10 px-6 bg-gradient-to-r from-blue-700 to-indigo-800 dark:from-blue-600 dark:to-indigo-500">
-        <div class="max-w-lg space-y-4 text-center md:text-left">
-            <h1 class="text-3xl md:text-4xl font-bold text-white leading-tight">I’m here to turn your ideas into functional, cutting-edge software solutions.</h1>
-            <p class="text-lg text-gray-300 mt-4">With a passion for coding and problem-solving, I build scalable and impactful web applications that address real-world challenges.</p>
-        </div>
-        <div class="mt-10 md:mt-0">
-            <!-- <img src="https://via.placeholder.com/400" alt="Your Image" class="rounded-full shadow-lg mx-auto md:mx-0 border-4 border-white"/> -->
-            <img src="https://i.pinimg.com/280x280_RS/79/dd/11/79dd11a9452a92a1accceec38a45e16a.jpg" alt="Your Image" class="rounded-full shadow-lg mx-auto md:mx-0 border-4 border-white"/>
-        </div>
-    </section>
+    <div id="main-content" class="hidden">
 
-    <!-- About Me Section -->
-    <section id="about" class="py-20 px-6 bg-gray-800 dark:bg-gray-700 text-center">
-        <h2 class="text-3xl font-semibold text-blue-400">About Me</h2>
-        <p class="max-w-3xl mx-auto text-lg text-gray-300 mt-6">I am a passionate web developer dedicated to crafting elegant, functional, and scalable solutions. With extensive experience in creating dynamic web applications, I focus on delivering quality and impact through clean code and thoughtful design. I’m always looking to learn and improve, embracing new technologies and best practices in web development.</p>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="py-20 px-6 bg-gray-900 dark:bg-gray-800 text-center">
-        <h2 class="text-3xl font-semibold text-blue-400">Skills</h2>
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-10 max-w-5xl mx-auto mt-10">
-            <div class="flex flex-col items-center text-white">
-                <i class="fab fa-html5 text-5xl text-orange-600"></i>
-                <p class="mt-2 text-lg font-semibold">HTML</p>
+        <!-- Progress Bar -->
+        <div id="progress-bar"></div>
+    
+            <!-- Page Loader -->
+        
+        <!-- Navbar -->
+        <nav class="bg-gray-800 text-white flex items-center justify-between p-3 md:px-20">
+            <!-- Left side: Logo  space-x-3 -->
+            <div class="flex items-center"> 
+                <div class="bg-blue-600 text-white rounded-full p-1 text-2xl font-semibold">
+                    SN
+                </div>
+                <span class="text-2xl font-semibold text-white tracking-wider">askar</span>
             </div>
-            <div class="flex flex-col items-center text-white">
-                <i class="fab fa-css3-alt text-5xl text-blue-500"></i>
-                <p class="mt-2 text-lg font-semibold">CSS</p>
+    
+            <!-- Center: Navigation Tabs (Responsive) -->
+            <div class="hidden md:flex space-x-8 text-lg">
+                <a href="#about" class="hover:text-blue-400 transition duration-200">About Me</a>
+                <a href="#skills" class="hover:text-blue-400 transition duration-200">Skills</a>
+                <a href="#projects" class="hover:text-blue-400 transition duration-200">Projects</a>
             </div>
-            <div class="flex flex-col items-center text-white">
-                <i class="fab fa-js-square text-5xl text-yellow-400"></i>
-                <p class="mt-2 text-lg font-semibold">JavaScript</p>
-            </div>
-            <div class="flex flex-col items-center text-white">
-                <i class="fab fa-react text-5xl text-cyan-400"></i>
-                <p class="mt-2 text-lg font-semibold">React</p>
-            </div>
-            <div class="flex flex-col items-center text-white">
-                <i class="fas fa-database text-5xl text-green-500"></i>
-                <p class="mt-2 text-lg font-semibold">SQL</p>
-            </div>
-            <div class="flex flex-col items-center text-white">
-                <i class="fab fa-node-js text-5xl text-green-700"></i>
-                <p class="mt-2 text-lg font-semibold">Node.js</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 px-6 bg-gray-800 dark:bg-gray-700 text-center">
-        <h2 class="text-3xl font-semibold text-blue-400">Projects</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto mt-10">
-            <div class="bg-gray-700 dark:bg-gray-600 p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold text-white">Project 1</h3>
-                <p class="mt-2 text-gray-400">A brief description of the project. This project was focused on building a responsive and dynamic web application.</p>
-            </div>
-            <div class="bg-gray-700 dark:bg-gray-600 p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold text-white">Project 2</h3>
-                <p class="mt-2 text-gray-400">This project was aimed at creating a complex web solution with interactive elements and a user-friendly design.</p>
-            </div>
-            <div class="bg-gray-700 dark:bg-gray-600 p-6 rounded-lg shadow-lg">
-                <h3 class="text-xl font-semibold text-white">Project 3</h3>
-                <p class="mt-2 text-gray-400">A full-stack application I developed, focusing on server-side logic and API integration with third-party services.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gray-900 dark:bg-gray-800 text-white py-10">
-        <div class="max-w-6xl mx-auto text-center">
-            <p class="mb-4">Connect with me:</p>
-            <div class="flex justify-center space-x-6">
+    
+            <!-- Right side: Contact (Responsive) -->
+            <div class="hidden md:flex space-x-6 text-xl">
                 <a href="mailto:your-email@example.com" class="hover:text-blue-400 transition duration-200"><i class="fas fa-envelope"></i></a>
                 <a href="https://www.linkedin.com/in/your-profile" class="hover:text-blue-400 transition duration-200"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/your-github" class="hover:text-blue-400 transition duration-200"><i class="fab fa-github"></i></a>
             </div>
-            <p class="mt-4 text-sm">&copy; 2024 Your Name. All Rights Reserved.</p>
+    
+            <!-- Mobile: Light/Dark Mode Toggle Button -->
+            <!-- <button id="theme-toggle-mobile" class="text-xl text-gray-200 hover:text-gray-400 md:hidden">
+                <i class="fa-solid fa-moon"></i>
+            </button> -->
+    
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden flex items-center">
+                <button id="mobile-menu-btn" class="text-3xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+    
+            <!-- Desktop: Light/Dark Mode Toggle Button -->
+            <!-- <button id="theme-toggle-desktop" class="hidden md:flex items-center space-x-2 text-xl text-gray-200 hover:text-gray-400">
+                <i class="fa-solid fa-moon"></i>
+            </button> -->
+        </nav>
+    
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="md:hidden bg-gray-800 text-white p-3 space-y-4 hidden">
+            <a href="#about" class="block hover:text-blue-400 transition duration-200">About Me</a>
+            <a href="#skills" class="block hover:text-blue-400 transition duration-200">Skills</a>
+            <a href="#projects" class="block hover:text-blue-400 transition duration-200">Projects</a>
+            <div class="flex space-x-6 text-xl justify-center">
+                <a href="mailto:your-email@example.com" class="hover:text-blue-400 transition duration-200"><i class="fas fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/your-profile" class="hover:text-blue-400 transition duration-200"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/your-github" class="hover:text-blue-400 transition duration-200"><i class="fab fa-github"></i></a>
+            </div>
         </div>
-    </footer>
+    
+        <!-- Hero Section -->
+        <section class="flex flex-col md:flex-row justify-between items-center py-10 px-6 bg-gradient-to-r from-blue-700 to-indigo-800 dark:from-blue-600 dark:to-indigo-500">
+            <div class="max-w-lg space-y-4 text-center md:text-left">
+                <h1 class="text-3xl md:text-4xl font-bold text-white leading-tight">I’m here to turn your ideas into functional, cutting-edge software solutions.</h1>
+                <p class="text-lg text-gray-300 mt-4">With a passion for coding and problem-solving, I build scalable and impactful web applications that address real-world challenges.</p>
+            </div>
+            <div class="mt-10 md:mt-0">
+                <!-- <img src="https://via.placeholder.com/400" alt="Your Image" class="rounded-full shadow-lg mx-auto md:mx-0 border-4 border-white"/> -->
+                <img src="https://i.pinimg.com/280x280_RS/79/dd/11/79dd11a9452a92a1accceec38a45e16a.jpg" alt="Your Image" class="rounded-full shadow-lg mx-auto md:mx-0 border-4 border-white"/>
+            </div>
+        </section>
+    
+        <!-- About Me Section -->
+        <section id="about" class="py-20 px-6 bg-gray-800 dark:bg-gray-700 text-center">
+            <h2 class="text-3xl font-semibold text-blue-400">About Me</h2>
+            <p class="max-w-3xl mx-auto text-lg text-gray-300 mt-6">I am a passionate web developer dedicated to crafting elegant, functional, and scalable solutions. With extensive experience in creating dynamic web applications, I focus on delivering quality and impact through clean code and thoughtful design. I’m always looking to learn and improve, embracing new technologies and best practices in web development.</p>
+        </section>
+    
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 px-6 bg-gray-900 dark:bg-gray-800 text-center">
+            <h2 class="text-3xl font-semibold text-blue-400">Skills</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-10 max-w-5xl mx-auto mt-10">
+                <div class="flex flex-col items-center text-white">
+                    <i class="fab fa-html5 text-5xl text-orange-600"></i>
+                    <p class="mt-2 text-lg font-semibold">HTML</p>
+                </div>
+                <div class="flex flex-col items-center text-white">
+                    <i class="fab fa-css3-alt text-5xl text-blue-500"></i>
+                    <p class="mt-2 text-lg font-semibold">CSS</p>
+                </div>
+                <div class="flex flex-col items-center text-white">
+                    <i class="fab fa-js-square text-5xl text-yellow-400"></i>
+                    <p class="mt-2 text-lg font-semibold">JavaScript</p>
+                </div>
+                <div class="flex flex-col items-center text-white">
+                    <i class="fab fa-react text-5xl text-cyan-400"></i>
+                    <p class="mt-2 text-lg font-semibold">React</p>
+                </div>
+                <div class="flex flex-col items-center text-white">
+                    <i class="fas fa-database text-5xl text-green-500"></i>
+                    <p class="mt-2 text-lg font-semibold">SQL</p>
+                </div>
+                <div class="flex flex-col items-center text-white">
+                    <i class="fab fa-node-js text-5xl text-green-700"></i>
+                    <p class="mt-2 text-lg font-semibold">Node.js</p>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 px-6 bg-gray-800 dark:bg-gray-700 text-center">
+            <h2 class="text-3xl font-semibold text-blue-400">Projects</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-7xl mx-auto mt-10">
+                <div class="bg-gray-700 dark:bg-gray-600 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-white">Project 1</h3>
+                    <p class="mt-2 text-gray-400">A brief description of the project. This project was focused on building a responsive and dynamic web application.</p>
+                </div>
+                <div class="bg-gray-700 dark:bg-gray-600 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-white">Project 2</h3>
+                    <p class="mt-2 text-gray-400">This project was aimed at creating a complex web solution with interactive elements and a user-friendly design.</p>
+                </div>
+                <div class="bg-gray-700 dark:bg-gray-600 p-6 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold text-white">Project 3</h3>
+                    <p class="mt-2 text-gray-400">A full-stack application I developed, focusing on server-side logic and API integration with third-party services.</p>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Footer -->
+        <footer class="bg-gray-900 dark:bg-gray-800 text-white py-10">
+            <div class="max-w-6xl mx-auto text-center">
+                <p class="mb-4">Connect with me:</p>
+                <div class="flex justify-center space-x-6">
+                    <a href="mailto:your-email@example.com" class="hover:text-blue-400 transition duration-200"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/your-profile" class="hover:text-blue-400 transition duration-200"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/your-github" class="hover:text-blue-400 transition duration-200"><i class="fab fa-github"></i></a>
+                </div>
+                <p class="mt-4 text-sm">&copy; 2024 Your Name. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </div>
 
     <!-- Mobile Menu Toggle Script -->
     <script>
+        window.addEventListener('load', () => {
+            // Hide the loader
+            const loader = document.getElementById('loader');
+            const mainContent = document.getElementById('main-content');
+            setTimeout(() => {
+                loader.style.display = 'none'; // Hide loader
+                mainContent.classList.remove('hidden'); // Show main content
+            }, 500);
+        });
+
         // JavaScript to handle scroll progress
         const progressBar = document.getElementById('progress-bar');
 
@@ -199,34 +248,34 @@
 
 
 
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-        const themeToggleDesktop = document.getElementById('theme-toggle-desktop');
+        // const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        // const mobileMenu = document.getElementById('mobile-menu');
+        // const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        // const themeToggleDesktop = document.getElementById('theme-toggle-desktop');
 
-        // Toggle mobile menu visibility
-        mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        // // Toggle mobile menu visibility
+        // mobileMenuBtn.addEventListener('click', () => {
+        //     mobileMenu.classList.toggle('hidden');
+        // });
 
-        // Toggle theme
-        function toggleTheme() {
-            if (localStorage.getItem("theme") === "dark") {
-                localStorage.setItem("theme", "light");
-                document.documentElement.classList.remove("dark");
-                themeToggleMobile.innerHTML = `<i class="fa-solid fa-sun"></i>`; // Sun icon when light mode
-                themeToggleDesktop.innerHTML = `<i class="fa-solid fa-sun"></i>`;
-            } else {
-                localStorage.setItem("theme", "dark");
-                document.documentElement.classList.add("dark");
-                themeToggleMobile.innerHTML = `<i class="fa-solid fa-moon"></i>`; // Moon icon when dark mode
-                themeToggleDesktop.innerHTML = `<i class="fa-solid fa-moon"></i>`;
-            }
-        }
+        // // Toggle theme
+        // function toggleTheme() {
+        //     if (localStorage.getItem("theme") === "dark") {
+        //         localStorage.setItem("theme", "light");
+        //         document.documentElement.classList.remove("dark");
+        //         themeToggleMobile.innerHTML = `<i class="fa-solid fa-sun"></i>`; // Sun icon when light mode
+        //         themeToggleDesktop.innerHTML = `<i class="fa-solid fa-sun"></i>`;
+        //     } else {
+        //         localStorage.setItem("theme", "dark");
+        //         document.documentElement.classList.add("dark");
+        //         themeToggleMobile.innerHTML = `<i class="fa-solid fa-moon"></i>`; // Moon icon when dark mode
+        //         themeToggleDesktop.innerHTML = `<i class="fa-solid fa-moon"></i>`;
+        //     }
+        // }
 
-        // Add event listeners
-        themeToggleMobile.addEventListener('click', toggleTheme);
-        themeToggleDesktop.addEventListener('click', toggleTheme);
+        // // Add event listeners
+        // themeToggleMobile.addEventListener('click', toggleTheme);
+        // themeToggleDesktop.addEventListener('click', toggleTheme);
     </script>
 </body>
 </html>
